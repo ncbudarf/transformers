@@ -10,7 +10,9 @@ import Foundation
 
 class BuildViewModel: ObservableObject {
     var newTransformer: TransformerToCreate = TransformerToCreate()
+    var pieChart: PieChart
     
-    
-    
+    init() {
+        self.pieChart = PieChart(newTransformer: newTransformer)
+    }
 }

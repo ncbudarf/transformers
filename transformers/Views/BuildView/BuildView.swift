@@ -12,6 +12,6 @@ struct BuildView: View {
     @ObservedObject var viewModel: BuildViewModel = BuildViewModel()
     
     var body: some View {
-        Text("The content of the second view")
+        PieChartView(pieChart: viewModel.pieChart)
     }
 }

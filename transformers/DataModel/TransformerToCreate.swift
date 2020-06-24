@@ -55,7 +55,7 @@ struct TransformerToCreate: Encodable {
         self.endurance = Int.random(in: 1 ..< 10)
         self.rank = Int.random(in: 0 ..< 10)
         self.courage = Int.random(in: 1 ..< 10)
-        self.firepower = Int.random(in: 0 ..< 10)
+        self.firepower = Int.random(in: 1 ..< 10)
         self.skill = Int.random(in: 1 ..< 10)
     }
     
@@ -68,7 +68,7 @@ struct TransformerToCreate: Encodable {
         self.endurance = Int.random(in: 1 ..< 10)
         self.rank = Int.random(in: 0 ..< 10)
         self.courage = Int.random(in: 1 ..< 10)
-        self.firepower = Int.random(in: 0 ..< 10)
+        self.firepower = Int.random(in: 1 ..< 10)
         self.skill = Int.random(in: 1 ..< 10)
     }
 }
