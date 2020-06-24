@@ -20,7 +20,13 @@ class Request {
     private let baseURLString = "https://transformers-api.firebaseapp.com"
     private let allsparkPath = "/allspark"
     private let transformerPath = "/transformers"
-
+    
+    typealias CompletionHandler = (_ success:Bool) -> Void
+    
+    var hasToken: Bool {
+        return KeychainWrapper.standard.string(forKey: "JWT") != nil
+    }
+    
     private func token() -> String? {
         guard let jwt = KeychainWrapper.standard.string(forKey: "JWT") else {
             return nil
@@ -79,9 +85,10 @@ class Request {
 }
 
 extension Request {
-    func getToken() {
+    func getToken(completionHandler: @escaping CompletionHandler) {
         guard var url = URL(string: baseURLString) else {
             print("Invalid base URL")
+            completionHandler(false)
             return
         }
         url.appendPathComponent(allsparkPath)
@@ -90,13 +97,16 @@ extension Request {
                 print("no data")
                 guard let error = error else {
                     print("no error")
+                    completionHandler(false)
                     return
                 }
+                completionHandler(false)
                 print(error)
                 return
             }
             guard let jwtString = String(data: data, encoding: .utf8) else { return }
             KeychainWrapper.standard.set(jwtString, forKey: "JWT") //TODO: Validate that the key was saved correctly
+            completionHandler(true)
             print(jwtString)
             
         }).resume()

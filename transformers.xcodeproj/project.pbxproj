@@ -26,6 +26,7 @@
 		1F7D9D2224A2D58E009191D1 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D9D2124A2D58E009191D1 /* PieChart.swift */; };
 		1F7D9D2424A2E392009191D1 /* PieChartSliceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D9D2324A2E392009191D1 /* PieChartSliceView.swift */; };
 		1F7D9D2624A2F88F009191D1 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D9D2524A2F88F009191D1 /* PieChartView.swift */; };
+		1F7D9D2924A3DD20009191D1 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D9D2824A3DD20009191D1 /* ContentViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		1F7D9D2124A2D58E009191D1 /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
 		1F7D9D2324A2E392009191D1 /* PieChartSliceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartSliceView.swift; sourceTree = "<group>"; };
 		1F7D9D2524A2F88F009191D1 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
+		1F7D9D2824A3DD20009191D1 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		8CCD468867362C89D420EA02 /* Pods-transformers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-transformers.release.xcconfig"; path = "Target Support Files/Pods-transformers/Pods-transformers.release.xcconfig"; sourceTree = "<group>"; };
 		C40A95FA1688CC7A71E5E81A /* Pods_transformers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_transformers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F1EC76534A916D583A7AAF /* Pods-transformers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-transformers.debug.xcconfig"; path = "Target Support Files/Pods-transformers/Pods-transformers.debug.xcconfig"; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				1F7D9CEE24A18C98009191D1 /* ContentView.swift */,
+				1F7D9D2824A3DD20009191D1 /* ContentViewModel.swift */,
 				1F7D9D2724A2FD8E009191D1 /* PieChart */,
 				1F7D9D1824A2C9CF009191D1 /* BuildView */,
 			);
@@ -355,6 +358,7 @@
 				1F7D9D2224A2D58E009191D1 /* PieChart.swift in Sources */,
 				1F7D9D1C24A2CDC5009191D1 /* BuildViewModel.swift in Sources */,
 				1F7D9CEF24A18C98009191D1 /* ContentView.swift in Sources */,
+				1F7D9D2924A3DD20009191D1 /* ContentViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
