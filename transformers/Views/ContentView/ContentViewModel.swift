@@ -12,6 +12,14 @@ import Combine
 class ContentViewModel: ObservableObject {
     let request: Request = Request()
     
+    func overlayText(_ failedToFetchToken: Bool) -> String {
+        failedToFetchToken ? overlayTextFailure : overlayTextInitial
+    }
+    
+    private let overlayTextInitial: String = "Fetching Token..."
+    private let overlayTextFailure: String = "Failed to fetch Token"
+    let retryButtonText: String = "Retry"
+    
     @Published var hasToken: Bool
     
     init() {

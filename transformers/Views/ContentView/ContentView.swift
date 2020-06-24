@@ -12,25 +12,7 @@ struct ContentView: View {
     @ObservedObject var viewModel: ContentViewModel = ContentViewModel()
     
     var body: some View {
-        viewModel.hasToken ? AnyView(ContentTabView()) : AnyView(OverlayView(viewModel: viewModel))
-    }
-}
-
-struct OverlayView: View {
-    @ObservedObject var viewModel: ContentViewModel
-    
-    var body: some View {
-        Text("Fetching Token...").onAppear{
-            self.viewModel.request.getToken(completionHandler: { success in
-                if success {
-                    DispatchQueue.main.async {
-                        self.viewModel.hasToken = true
-                    }
-                } else {
-                    //TODO: Handle retry
-                }
-            })
-        }
+        viewModel.hasToken ? AnyView(ContentTabView()) : AnyView(ContentOverlayView(viewModel: viewModel))
     }
 }
 
