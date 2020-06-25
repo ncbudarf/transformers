@@ -16,7 +16,7 @@ public struct PieChartSliceView: View {
     
     var path: Path {
         let chartSize = geometry.size.width / 2
-        let radius = chartSize * (CGFloat(pieSlice.pieRecipe.value) / 10.0)//TODO: This 10.0 is a magic number
+        let radius = chartSize * (CGFloat(pieSlice.pieRecipe.statValue) / 10.0)//TODO: This 10.0 is a magic number
         let centerX = chartSize
         let centerY = chartSize
         
@@ -32,12 +32,12 @@ public struct PieChartSliceView: View {
     
     public var body: some View {
         ZStack {
-            path.fill(pieSlice.pieRecipe.color)
+            path.fill(pieSlice.pieRecipe.statColor)
                 .overlay(path.stroke(Color.white, lineWidth: 1))
                 .scaleEffect(self.show ? 1 : 0)
                 .animation(
                     Animation.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.3)
-                    .delay(Double(pieSlice.pieRecipe.value) * 0.05)
+                    .delay(Double(pieSlice.pieRecipe.statValue) * 0.05)
                 ).onAppear() {
                         self.show = true
                 }

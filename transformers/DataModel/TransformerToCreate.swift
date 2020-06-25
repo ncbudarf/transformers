@@ -19,9 +19,6 @@ struct TransformerToCreate: Encodable {
     var firepower: Int
     var skill: Int
     var team: String
-//    
-//    let deceptaconNames = ["Megatron", "Starscream", "Barricade", "Frenzy", "Thundercracker", "Skywarp", "Jetstorm", "Brawl", "Devastator", "Bonecrusher"] //TODO Add more names
-//    let autobotNames = ["Optimus Prime", "Ratchet", "Arcee", "Bumblebee", "Bulkhead", "Smokescreen", "Wheeljack", "Ultra Magnus", "Cliffjumper", "Predaking"] //TODO Add more names
     
     init(name: String,
          strength: Int,
@@ -44,31 +41,5 @@ struct TransformerToCreate: Encodable {
         self.firepower = firepower
         self.skill = skill
         self.team = team
-    }
-    
-    init(team: String) {
-        self.team = team
-        self.name = "Megatron"
-        self.strength = Int.random(in: 1 ..< 10)
-        self.intelligence = Int.random(in: 1 ..< 10)
-        self.speed = Int.random(in: 1 ..< 10)
-        self.endurance = Int.random(in: 1 ..< 10)
-        self.rank = Int.random(in: 0 ..< 10)
-        self.courage = Int.random(in: 1 ..< 10)
-        self.firepower = Int.random(in: 1 ..< 10)
-        self.skill = Int.random(in: 1 ..< 10)
-    }
-    
-    init() {
-        self.team = "D"
-        self.name = "Random Name"
-        self.strength = Int.random(in: 1 ..< 10)
-        self.intelligence = Int.random(in: 1 ..< 10)
-        self.speed = Int.random(in: 1 ..< 10)
-        self.endurance = Int.random(in: 1 ..< 10)
-        self.rank = Int.random(in: 0 ..< 10)
-        self.courage = Int.random(in: 1 ..< 10)
-        self.firepower = Int.random(in: 1 ..< 10)
-        self.skill = Int.random(in: 1 ..< 10)
     }
 }

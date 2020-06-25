@@ -11,14 +11,14 @@ import SwiftUI
 
 class PieSlice: Identifiable, ObservableObject {
     let id: UUID = UUID()
-    var pieRecipe: PieRecipe
+    @Published var pieRecipe: StatViewModel
     var annotation: String = ""
     var startAngle: Angle = .degrees(0)
     var endAngle: Angle = .degrees(0)
     
-    init(pieRecipe: PieRecipe, startAngle: Angle, endAngle: Angle) {
-        self.pieRecipe = pieRecipe
-        self.annotation = String(pieRecipe.value)
+    init(viewModel: StatViewModel, startAngle: Angle, endAngle: Angle) {
+        self.pieRecipe = viewModel
+        self.annotation = String(viewModel.statValue)
         self.startAngle = startAngle
         self.endAngle = endAngle
     }

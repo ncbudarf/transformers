@@ -13,32 +13,23 @@ class PieChart: ObservableObject {
     @Published private(set) var data: [PieSlice] = []
     var startAngle: Int = -90
     
-    init(newTransformer: TransformerToCreate) {
-        //TODO:This is a bad way of doing it
-        data.append(PieSlice(pieRecipe: PieRecipe(title: "Strength", value: newTransformer.strength, color: .red),
-                             startAngle: .degrees(startAngle(at: 0, interval: 72)),
-                             endAngle: .degrees(endAngle(at: 0, interval: 72))))
-        data.append(PieSlice(pieRecipe: PieRecipe(title: "Intelligence", value: newTransformer.intelligence, color: .blue),
-                             startAngle: .degrees(startAngle(at: 1, interval: 72)),
-                             endAngle: .degrees(endAngle(at: 1, interval: 72))))
-        data.append(PieSlice(pieRecipe: PieRecipe(title: "Speed", value: newTransformer.speed, color: .green),
-                             startAngle: .degrees(startAngle(at: 2, interval: 72)),
-                             endAngle: .degrees(endAngle(at: 2, interval: 72))))
-        data.append(PieSlice(pieRecipe: PieRecipe(title: "Endurance", value: newTransformer.endurance, color: .yellow),
-                             startAngle: .degrees(startAngle(at: 3, interval: 72)),
-                             endAngle: .degrees(endAngle(at: 3, interval: 72))))
-        data.append(PieSlice(pieRecipe: PieRecipe(title: "Firepower", value: newTransformer.firepower, color: .gray),
-                             startAngle: .degrees(startAngle(at: 4, interval: 72)),
-                             endAngle: .degrees(endAngle(at: 4, interval: 72))))
+    init(newTransformer: NewTransformer) {
+        let models = newTransformer.statViewModels
+        let interval = 360/newTransformer.statViewModels.count
+        for (index, element) in models.enumerated() {
+            data.append(PieSlice(viewModel: element,
+            startAngle: .degrees(startAngle(at: index, interval: interval)),
+            endAngle: .degrees(endAngle(at: index, interval: interval))))
+        }
     }
     
-    private func startAngle(at index: Int, interval: Int) -> Double {//TODO: interval is basically a magic number
+    private func startAngle(at index: Int, interval: Int) -> Double {
         var originalAngle: Int = startAngle
         originalAngle += interval*index
         return Double(originalAngle)
     }
     
-    private func endAngle(at index: Int, interval: Int) -> Double {//TODO: interval is basically a magic number
+    private func endAngle(at index: Int, interval: Int) -> Double {
         var originalAngle: Int = startAngle
         originalAngle += interval*(index+1)
         return Double(originalAngle)

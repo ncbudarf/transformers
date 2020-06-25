@@ -152,23 +152,31 @@ extension Request {
         }).resume()
     }
     
-    func addTransformer(transformer: TransformerToCreate) {
-        guard let urlRequest = createURLRequest(type: .addTransformer, newTransformer: TransformerToCreate(team: "D")) else { return }
+    func addTransformer(transformer: TransformerToCreate,
+                        completionHandler: @escaping CompletionHandler) {
+        guard let urlRequest = createURLRequest(type: .addTransformer, newTransformer: transformer) else {
+                completionHandler(false)
+                return
+        }
         
         URLSession.shared.dataTask(with: urlRequest, completionHandler: { data, response, error in
             guard let data = data else {
                 print("no data")
                 guard let error = error else {
                     print("no error")
+                    completionHandler(false)
                     return
                 }
+                completionHandler(false)
                 print(error)
                 return
             }
             guard let transformer = try? JSONDecoder().decode(Transformer.self, from: data) else {
                 print("Error: Couldn't decode data into Transformers")
+                completionHandler(false)
                 return
             }
+            completionHandler(true)
             print(transformer)
         }).resume()
     }
