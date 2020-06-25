@@ -1,0 +1,20 @@
+PODS:
+  - SwiftGen (6.2.0)
+  - SwiftKeychainWrapper (3.4.0)
+
+DEPENDENCIES:
+  - SwiftGen (~> 6.0)
+  - SwiftKeychainWrapper
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - SwiftGen
+    - SwiftKeychainWrapper
+
+SPEC CHECKSUMS:
+  SwiftGen: 77e88c8609381660cc1084c5ba8e1dc6065de692
+  SwiftKeychainWrapper: 6fc49fbf7d4a6b0772917acb0e53a1639f6078d6
+
+PODFILE CHECKSUM: 8faeaf3aff8e95a1fb2e555877822d8eeb8e617b
+
+COCOAPODS: 1.9.1
