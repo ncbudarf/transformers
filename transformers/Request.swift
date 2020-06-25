@@ -22,6 +22,7 @@ class Request {
     private let transformerPath = "/transformers"
     
     typealias CompletionHandler = (_ success:Bool) -> Void
+    typealias CompletionHandlerWithTransformers = (_ transformers:[Transformer]?) -> Void
     
     var hasToken: Bool {
         return KeychainWrapper.standard.string(forKey: "JWT") != nil
@@ -114,16 +115,21 @@ extension Request {
 }
     
 extension Request {
-    func getTransformers() {
-        guard let urlRequest = createURLRequest(type: .getTransformers) else { return }
+    func getTransformers(completionHandler: @escaping CompletionHandlerWithTransformers) {
+        guard let urlRequest = createURLRequest(type: .getTransformers) else {
+            completionHandler(nil)
+            return
+        }
         
         URLSession.shared.dataTask(with: urlRequest, completionHandler: { data, response, error in
             guard let data = data else {
                 print("no data")
                 guard let error = error else {
                     print("no error")
+                    completionHandler(nil)
                     return
                 }
+                completionHandler(nil)
                 print(error)
                 return
             }
@@ -131,24 +137,30 @@ extension Request {
                 print("Error: Couldn't decode data into Transformers")
                 return
             }
-            print(transformers.transformers)
+            completionHandler(transformers.transformers)
         }).resume()
     }
     
-    func removeTransformer(transformerID: String) {
-        guard let urlRequest = createURLRequest(type: .removeTransformer, transformerID: transformerID) else { return }
+    func removeTransformer(transformerID: String,
+                           completionHandler: @escaping CompletionHandler) {
+        guard let urlRequest = createURLRequest(type: .removeTransformer, transformerID: transformerID) else {
+            completionHandler(false)
+            return
+        }
         
         URLSession.shared.dataTask(with: urlRequest, completionHandler: { data, response, error in
             guard let response = response else {
                 print("no response")
                 guard let error = error else {
                     print("no error")
+                    completionHandler(false)
                     return
                 }
+                completionHandler(false)
                 print(error)
                 return
             }
-            print(response)//TODO: Process response in meaningful way
+            completionHandler(true)
         }).resume()
     }
     

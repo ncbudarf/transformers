@@ -42,7 +42,6 @@ public struct PieChartSliceView: View {
                         self.show = true
                 }
         }
-        
     }
 }
 

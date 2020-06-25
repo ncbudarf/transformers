@@ -19,7 +19,7 @@ struct ContentView: View {
 struct ContentTabView: View {
     var body: some View{
         TabView {
-            Text("The content of the first view")
+            TransformerView()
                 .tabItem {
                     Image("transform")
                     Text("Transform")

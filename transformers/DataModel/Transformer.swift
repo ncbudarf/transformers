@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Transformer: Decodable {
+struct Transformer: Codable {
     var id: String
     var name: String
     var team: String

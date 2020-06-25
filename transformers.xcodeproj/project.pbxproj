@@ -36,6 +36,12 @@
 		1F7D9D3B24A45EB6009191D1 /* RerollTransformerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D9D3A24A45EB6009191D1 /* RerollTransformerView.swift */; };
 		1F7D9D3D24A5209D009191D1 /* SubmitTransformerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D9D3C24A5209D009191D1 /* SubmitTransformerView.swift */; };
 		1F7D9D3F24A52168009191D1 /* TransformerNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D9D3E24A52168009191D1 /* TransformerNameView.swift */; };
+		1F7D9D4224A53485009191D1 /* TransformerListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D9D4124A53485009191D1 /* TransformerListCellView.swift */; };
+		1F7D9D4424A53495009191D1 /* TransformerListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D9D4324A53495009191D1 /* TransformerListCellViewModel.swift */; };
+		1F7D9D4624A53D1D009191D1 /* TransformerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D9D4524A53D1D009191D1 /* TransformerListView.swift */; };
+		1F7D9D4824A5449A009191D1 /* TransformerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D9D4724A5449A009191D1 /* TransformerListViewModel.swift */; };
+		1F7D9D4A24A54813009191D1 /* TransformerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D9D4924A54813009191D1 /* TransformerView.swift */; };
+		1F7D9D5024A569C0009191D1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D9D4F24A569C0009191D1 /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +87,12 @@
 		1F7D9D3A24A45EB6009191D1 /* RerollTransformerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RerollTransformerView.swift; sourceTree = "<group>"; };
 		1F7D9D3C24A5209D009191D1 /* SubmitTransformerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitTransformerView.swift; sourceTree = "<group>"; };
 		1F7D9D3E24A52168009191D1 /* TransformerNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformerNameView.swift; sourceTree = "<group>"; };
+		1F7D9D4124A53485009191D1 /* TransformerListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformerListCellView.swift; sourceTree = "<group>"; };
+		1F7D9D4324A53495009191D1 /* TransformerListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformerListCellViewModel.swift; sourceTree = "<group>"; };
+		1F7D9D4524A53D1D009191D1 /* TransformerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformerListView.swift; sourceTree = "<group>"; };
+		1F7D9D4724A5449A009191D1 /* TransformerListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformerListViewModel.swift; sourceTree = "<group>"; };
+		1F7D9D4924A54813009191D1 /* TransformerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformerView.swift; sourceTree = "<group>"; };
+		1F7D9D4F24A569C0009191D1 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		8CCD468867362C89D420EA02 /* Pods-transformers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-transformers.release.xcconfig"; path = "Target Support Files/Pods-transformers/Pods-transformers.release.xcconfig"; sourceTree = "<group>"; };
 		C40A95FA1688CC7A71E5E81A /* Pods_transformers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_transformers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F1EC76534A916D583A7AAF /* Pods-transformers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-transformers.debug.xcconfig"; path = "Target Support Files/Pods-transformers/Pods-transformers.debug.xcconfig"; sourceTree = "<group>"; };
@@ -137,6 +149,7 @@
 				1F7D9CF824A18C9B009191D1 /* Info.plist */,
 				1F7D9CF224A18C9B009191D1 /* Preview Content */,
 				1F7D9D0C24A18EE9009191D1 /* Request.swift */,
+				1F7D9D4F24A569C0009191D1 /* DataManager.swift */,
 			);
 			path = transformers;
 			sourceTree = "<group>";
@@ -172,6 +185,7 @@
 		1F7D9D1724A2C9C7009191D1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1F7D9D4024A524A0009191D1 /* TransformerListView */,
 				1F7D9D2A24A3F1C1009191D1 /* ContentView */,
 				1F7D9D2724A2FD8E009191D1 /* PieChart */,
 				1F7D9D1824A2C9CF009191D1 /* BuildView */,
@@ -215,6 +229,18 @@
 				1F7D9D2B24A3F1F1009191D1 /* ContentOverlayView.swift */,
 			);
 			path = ContentView;
+			sourceTree = "<group>";
+		};
+		1F7D9D4024A524A0009191D1 /* TransformerListView */ = {
+			isa = PBXGroup;
+			children = (
+				1F7D9D4124A53485009191D1 /* TransformerListCellView.swift */,
+				1F7D9D4324A53495009191D1 /* TransformerListCellViewModel.swift */,
+				1F7D9D4524A53D1D009191D1 /* TransformerListView.swift */,
+				1F7D9D4724A5449A009191D1 /* TransformerListViewModel.swift */,
+				1F7D9D4924A54813009191D1 /* TransformerView.swift */,
+			);
+			path = TransformerListView;
 			sourceTree = "<group>";
 		};
 		ADB4E2677DB6B79552AFB66C /* Frameworks */ = {
@@ -399,27 +425,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F7D9D2624A2F88F009191D1 /* PieChartView.swift in Sources */,
+				1F7D9D5024A569C0009191D1 /* DataManager.swift in Sources */,
 				1F7D9CEB24A18C98009191D1 /* AppDelegate.swift in Sources */,
 				1F7D9D2F24A42090009191D1 /* NewTransformer.swift in Sources */,
 				1F7D9D3324A45593009191D1 /* StatSubView.swift in Sources */,
 				1F7D9D3724A45872009191D1 /* FactionSelectionButtonsView.swift in Sources */,
 				1F7D9D1624A1C17E009191D1 /* TransformerToCreate.swift in Sources */,
 				1F7D9D3D24A5209D009191D1 /* SubmitTransformerView.swift in Sources */,
+				1F7D9D4A24A54813009191D1 /* TransformerView.swift in Sources */,
 				1F7D9D2424A2E392009191D1 /* PieChartSliceView.swift in Sources */,
 				1F7D9D2024A2D537009191D1 /* PieSlice.swift in Sources */,
 				1F7D9D3924A459BD009191D1 /* TotalPowerView.swift in Sources */,
 				1F7D9D1424A1BA79009191D1 /* Transformer.swift in Sources */,
 				1F7D9D3F24A52168009191D1 /* TransformerNameView.swift in Sources */,
+				1F7D9D4424A53495009191D1 /* TransformerListCellViewModel.swift in Sources */,
 				1F7D9D0D24A18EE9009191D1 /* Request.swift in Sources */,
 				1F7D9CED24A18C98009191D1 /* SceneDelegate.swift in Sources */,
+				1F7D9D4224A53485009191D1 /* TransformerListCellView.swift in Sources */,
 				1F7D9D3524A455AA009191D1 /* StatView.swift in Sources */,
 				1F7D9D3124A451EA009191D1 /* StatViewModel.swift in Sources */,
 				1F7D9D1A24A2C9E3009191D1 /* BuildView.swift in Sources */,
 				1F7D9D1224A1BA60009191D1 /* Transformers.swift in Sources */,
+				1F7D9D4824A5449A009191D1 /* TransformerListViewModel.swift in Sources */,
 				1F7D9D2C24A3F1F1009191D1 /* ContentOverlayView.swift in Sources */,
 				1F7D9D2224A2D58E009191D1 /* PieChart.swift in Sources */,
 				1F7D9D3B24A45EB6009191D1 /* RerollTransformerView.swift in Sources */,
 				1F7D9D1C24A2CDC5009191D1 /* BuildViewModel.swift in Sources */,
+				1F7D9D4624A53D1D009191D1 /* TransformerListView.swift in Sources */,
 				1F7D9CEF24A18C98009191D1 /* ContentView.swift in Sources */,
 				1F7D9D2924A3DD20009191D1 /* ContentViewModel.swift in Sources */,
 			);
