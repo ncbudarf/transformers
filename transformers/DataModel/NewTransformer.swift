@@ -23,7 +23,7 @@ class NewTransformer {
     var team: TransformerFaction
     
     var power: Int {
-        return self.strength + self.intelligence + self.speed + self.endurance + self.firepower
+        return strength + intelligence + speed + endurance + firepower
     }
     
     public var convertTeamEnumToString: String {

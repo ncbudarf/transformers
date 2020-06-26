@@ -21,4 +21,8 @@ struct Transformer: Codable {
     var firepower: Int
     var skill: Int
     var team_icon: String
+    
+    func overallRating() -> Int {
+        return strength + intelligence + speed + endurance + firepower
+    }
 }

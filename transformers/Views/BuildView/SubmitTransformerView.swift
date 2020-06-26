@@ -18,6 +18,7 @@ struct SubmitTransformerView: View {
         viewModel.request.addTransformer(transformer: viewModel.newTransformer.convertToTransformerToCreate(),
                                          completionHandler: { transformer in
             if let transformer = transformer {
+                //TODO: alerts are supposed to show or something
                 _ = Alert(title: Text("Transformer Created!"), dismissButton: .default(Text("ok")))//TODO:Abstract out Alert
                 self.viewModel.updateTransformerList(with: transformer)
                 self.viewModel.submitButtonDisabled = false
