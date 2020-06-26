@@ -7,3 +7,20 @@
 //
 
 import Foundation
+import SwiftUI
+import Combine
+
+struct BattleView: View {
+    @ObservedObject var viewModel: BattleViewViewModel
+    
+    var body: some View{
+        switch viewModel.viewState {
+        case .pickTeam:
+            return Text("pick team")
+        case .battle:
+            return Text("battle")
+        default:
+            return Text("pick team")
+        }
+    }
+}

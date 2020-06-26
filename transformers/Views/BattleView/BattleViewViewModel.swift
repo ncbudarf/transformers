@@ -7,3 +7,13 @@
 //
 
 import Foundation
+import Combine
+
+enum BattleViewState {
+    case pickTeam
+    case battle
+}
+
+class BattleViewViewModel: ObservableObject {
+    @Published var viewState: BattleViewState = .pickTeam
+}

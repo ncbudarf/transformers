@@ -7,5 +7,4 @@ inhibit_all_warnings!
 
 target 'transformers' do
   pod 'SwiftKeychainWrapper'
-  pod 'SwiftGen', '~> 6.0'
 end

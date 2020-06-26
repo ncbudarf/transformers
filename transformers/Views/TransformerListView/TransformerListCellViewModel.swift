@@ -9,7 +9,6 @@
 import Foundation
 import SwiftUI
 
-
 class TransformerListCellViewModel {
     let transformer: Transformer
     

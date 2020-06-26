@@ -292,7 +292,6 @@
 				1F7D9CE424A18C98009191D1 /* Frameworks */,
 				1F7D9CE524A18C98009191D1 /* Resources */,
 				E84D8C5F00E1C0FF5B571AB8 /* [CP] Embed Pods Frameworks */,
-				1F7D9D2D24A3F495009191D1 /* Run SwiftGen */,
 			);
 			buildRules = (
 			);
@@ -380,24 +379,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1F7D9D2D24A3F495009191D1 /* Run SwiftGen */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Run SwiftGen";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/SwiftGen/bin/swiftgen\"\n";
-		};
 		DE82ED438ACFB16D61160F6A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

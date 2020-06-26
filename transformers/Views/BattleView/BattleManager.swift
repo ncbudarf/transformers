@@ -39,7 +39,9 @@ class BattleManager {
     private var events: [ArenaEvents] = []
     private var victories: Victories = Victories()
     
-    func arena() {
+    typealias CompletionHandler = (_ events:[ArenaEvents]?, _ victories: Victories) -> Void
+    
+    func arena(completionHandler: @escaping CompletionHandler) {
         //1. Order Teams by rank
         playerTeam = orderTeamByRank(team: playerTeam)
         computerTeam = orderTeamByRank(team: computerTeam)
@@ -49,6 +51,7 @@ class BattleManager {
         battle(playerTeam: playerTeam, computerTeam: computerTeam)
         
         //3. Team that won the most battles is the winner
+        completionHandler(events, victories)
     }
     
     func orderTeamByRank(team: [Transformer]) -> [Transformer] {
