@@ -15,18 +15,19 @@ struct SubmitTransformerView: View {
     private func submitTransformer() {
         _ = Alert(title: Text("Building Transformer"), dismissButton: .default(Text("ok")))//TODO:Abstract out Alert
         viewModel.submitButtonDisabled = true
-        viewModel.request.addTransformer(transformer: viewModel.newTransformer.convertToTransformerToCreate(), completionHandler: { success in
-            if success {
+        viewModel.request.addTransformer(transformer: viewModel.newTransformer.convertToTransformerToCreate(),
+                                         completionHandler: { transformer in
+            if let transformer = transformer {
                 _ = Alert(title: Text("Transformer Created!"), dismissButton: .default(Text("ok")))//TODO:Abstract out Alert
+                self.viewModel.updateTransformerList(with: transformer)
                 self.viewModel.submitButtonDisabled = false
                 self.viewModel.rerollTransformer()
             } else {
                 _ = Alert(title: Text("Failed To Create Transformer"), message: Text("Please try again"), primaryButton: .default(Text("ok"), action: {}), secondaryButton: .default(Text("retry"), action: {
-                    self.viewModel.submitButtonDisabled = true
-                    self.submitTransformer()
-                    //TODO: Save transformer localy
+                        self.viewModel.submitButtonDisabled = true
+                        self.submitTransformer()
                 }))//TODO:Abstract out Alert
-            }
+            }//TODO: SubmitButton not disabled for long enough
         })
     }
     

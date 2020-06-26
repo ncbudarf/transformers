@@ -12,8 +12,10 @@ import Combine
 class TransformerListViewModel: ObservableObject {
     let request: Request = Request()
     @Published var transformers: [Transformer] = []
-    
-    init() {
+}
+
+extension TransformerListViewModel {
+    func loadTransformers() {
         let transformers: [Transformer] = DataManager().decodeTransformerList()
         guard !transformers.isEmpty else {
             request.getTransformers(completionHandler: { transformers in

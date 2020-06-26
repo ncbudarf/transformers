@@ -23,6 +23,7 @@ class Request {
     
     typealias CompletionHandler = (_ success:Bool) -> Void
     typealias CompletionHandlerWithTransformers = (_ transformers:[Transformer]?) -> Void
+    typealias CompletionHandlerWithTransformer = (_ transformer:Transformer?) -> Void
     
     var hasToken: Bool {
         return KeychainWrapper.standard.string(forKey: "JWT") != nil
@@ -165,9 +166,9 @@ extension Request {
     }
     
     func addTransformer(transformer: TransformerToCreate,
-                        completionHandler: @escaping CompletionHandler) {
+                        completionHandler: @escaping CompletionHandlerWithTransformer) {
         guard let urlRequest = createURLRequest(type: .addTransformer, newTransformer: transformer) else {
-                completionHandler(false)
+                completionHandler(nil)
                 return
         }
         
@@ -176,20 +177,19 @@ extension Request {
                 print("no data")
                 guard let error = error else {
                     print("no error")
-                    completionHandler(false)
+                    completionHandler(nil)
                     return
                 }
-                completionHandler(false)
+                completionHandler(nil)
                 print(error)
                 return
             }
             guard let transformer = try? JSONDecoder().decode(Transformer.self, from: data) else {
                 print("Error: Couldn't decode data into Transformers")
-                completionHandler(false)
+                completionHandler(nil)
                 return
             }
-            completionHandler(true)
-            print(transformer)
+            completionHandler(transformer)
         }).resume()
     }
     

@@ -33,11 +33,21 @@ class BuildViewModel: ObservableObject {
 }
 
 extension BuildViewModel {
+    func updateTransformerList(with transformer: Transformer) {
+        var transformerList = DataManager().decodeTransformerList()
+        transformerList.append(transformer)
+        DataManager().encodeTransformerList(transformerList)//TODO:Probably should make sure this is a success
+    }
+}
+
+extension BuildViewModel {
     func rerollTransformer(to faction: TransformerFaction = Bool.random() ? .autobot : .deceptacon) {
-        newTransformer = NewTransformer(team: faction)
-        pieChart = PieChart(newTransformer: newTransformer)
-        currentFactionColor = ViewManager().currentColor(for: newTransformer.team)
-        statViewModels = newTransformer.statViewModels
+        DispatchQueue.main.async {
+            self.newTransformer = NewTransformer(team: faction)
+            self.pieChart = PieChart(newTransformer: self.newTransformer)
+            self.currentFactionColor = ViewManager().currentColor(for: self.newTransformer.team)
+            self.statViewModels = self.newTransformer.statViewModels
+        }
     }
 }
 

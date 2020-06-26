@@ -21,6 +21,7 @@ struct TransformerListView: View {
                 self.viewModel.removeElements(at: indexSet)
             }
         }.onAppear{
+            self.viewModel.loadTransformers()
             UITableView.appearance().tableFooterView = UIView()
         }
     }
