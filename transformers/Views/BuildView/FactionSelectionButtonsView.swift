@@ -27,13 +27,13 @@ struct FactionSelectionButtonsView: View {
                     Image("autobotButtonIcon")
                         .resizable()
                         .scaledToFit()
-                        .foregroundColor(self.viewModel.autobotColor)
+                        .foregroundColor(ViewManager().autobotColor)
                         .padding()
                 }.frame(maxWidth: .infinity)
                 Button(action: self.deceptaconFactionSelection) {
                     Image("deceptaconButtonIcon")
                         .resizable()
-                        .foregroundColor(self.viewModel.deceptaconColor)
+                        .foregroundColor(ViewManager().deceptaconColor)
                         .scaledToFit().padding()
                 }.frame(maxWidth: .infinity)
             }

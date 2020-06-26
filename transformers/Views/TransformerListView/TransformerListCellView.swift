@@ -19,16 +19,16 @@ struct TransformerListCellView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 45.0, height: 45.0, alignment: .leading)
-                    .foregroundColor(viewModel.currentColor)
+                    .foregroundColor(viewModel.currentColor())
                     .padding()
                 VStack {
                     Text(viewModel.transformerName)
                         .font(Font.system(size:30))
-                        .foregroundColor(viewModel.currentColor)
+                        .foregroundColor(viewModel.currentColor())
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Text(viewModel.transformerPower())
                         .font(Font.system(size:30))
-                        .foregroundColor(viewModel.currentColor)
+                        .foregroundColor(viewModel.currentColor())
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }

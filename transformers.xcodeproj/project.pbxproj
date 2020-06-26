@@ -42,6 +42,7 @@
 		1F7D9D4824A5449A009191D1 /* TransformerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D9D4724A5449A009191D1 /* TransformerListViewModel.swift */; };
 		1F7D9D4A24A54813009191D1 /* TransformerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D9D4924A54813009191D1 /* TransformerView.swift */; };
 		1F7D9D5024A569C0009191D1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D9D4F24A569C0009191D1 /* DataManager.swift */; };
+		1F7D9D5324A58D8B009191D1 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D9D5224A58D8B009191D1 /* ViewManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		1F7D9D4724A5449A009191D1 /* TransformerListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformerListViewModel.swift; sourceTree = "<group>"; };
 		1F7D9D4924A54813009191D1 /* TransformerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformerView.swift; sourceTree = "<group>"; };
 		1F7D9D4F24A569C0009191D1 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		1F7D9D5224A58D8B009191D1 /* ViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
 		8CCD468867362C89D420EA02 /* Pods-transformers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-transformers.release.xcconfig"; path = "Target Support Files/Pods-transformers/Pods-transformers.release.xcconfig"; sourceTree = "<group>"; };
 		C40A95FA1688CC7A71E5E81A /* Pods_transformers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_transformers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F1EC76534A916D583A7AAF /* Pods-transformers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-transformers.debug.xcconfig"; path = "Target Support Files/Pods-transformers/Pods-transformers.debug.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				1F7D9CF224A18C9B009191D1 /* Preview Content */,
 				1F7D9D0C24A18EE9009191D1 /* Request.swift */,
 				1F7D9D4F24A569C0009191D1 /* DataManager.swift */,
+				1F7D9D5224A58D8B009191D1 /* ViewManager.swift */,
 			);
 			path = transformers;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 		1F7D9D1724A2C9C7009191D1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1F7D9D5124A56E38009191D1 /* BattleView */,
 				1F7D9D4024A524A0009191D1 /* TransformerListView */,
 				1F7D9D2A24A3F1C1009191D1 /* ContentView */,
 				1F7D9D2724A2FD8E009191D1 /* PieChart */,
@@ -241,6 +245,13 @@
 				1F7D9D4924A54813009191D1 /* TransformerView.swift */,
 			);
 			path = TransformerListView;
+			sourceTree = "<group>";
+		};
+		1F7D9D5124A56E38009191D1 /* BattleView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BattleView;
 			sourceTree = "<group>";
 		};
 		ADB4E2677DB6B79552AFB66C /* Frameworks */ = {
@@ -451,6 +462,7 @@
 				1F7D9D2224A2D58E009191D1 /* PieChart.swift in Sources */,
 				1F7D9D3B24A45EB6009191D1 /* RerollTransformerView.swift in Sources */,
 				1F7D9D1C24A2CDC5009191D1 /* BuildViewModel.swift in Sources */,
+				1F7D9D5324A58D8B009191D1 /* ViewManager.swift in Sources */,
 				1F7D9D4624A53D1D009191D1 /* TransformerListView.swift in Sources */,
 				1F7D9CEF24A18C98009191D1 /* ContentView.swift in Sources */,
 				1F7D9D2924A3DD20009191D1 /* ContentViewModel.swift in Sources */,

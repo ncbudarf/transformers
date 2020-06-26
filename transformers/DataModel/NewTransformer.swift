@@ -10,27 +10,6 @@ import Foundation
 import Combine
 import SwiftUI
 
-enum TransformerFaction {
-    case autobot
-    case deceptacon
-}
-
-private struct TransformerNames {
-    let autobotNames = ["Optimus Prime", "Ratchet", "Arcee", "Bumblebee", "Bulkhead", "Smokescreen", "Wheeljack", "Ultra Magnus", "Cliffjumper", "Predaking"] //TODO Add more names
-    let deceptaconNames = ["Megatron", "Starscream", "Barricade", "Frenzy", "Thundercracker", "Skywarp", "Jetstorm", "Brawl", "Devastator", "Bonecrusher"] //TODO Add more names
-    
-    public func randomName(for team: TransformerFaction) -> String {
-        switch team {
-        case .autobot:
-            return autobotNames[Int.random(in: 0 ..< 10)]
-        case .deceptacon:
-            return deceptaconNames[Int.random(in: 0 ..< 10)]
-        default:
-            return autobotNames[Int.random(in: 0 ..< 10)]
-        }
-    }
-}
-
 class NewTransformer {
     var name: String
     var strength: Int
@@ -47,7 +26,7 @@ class NewTransformer {
         return self.strength + self.intelligence + self.speed + self.endurance + self.firepower
     }
     
-    private var convertTeamEnumToString: String {
+    public var convertTeamEnumToString: String {
         switch team {
         case .autobot:
             return "A"
@@ -57,35 +36,22 @@ class NewTransformer {
             return "A"
         }
     }
-    
-    let autobotColor: Color = .red
-    let deceptaconColor: Color = .purple
-    var currentColor: Color {
-        switch team {
-        case .autobot:
-            return autobotColor
-        case .deceptacon:
-            return deceptaconColor
-        default:
-            return autobotColor
-        }
-    }
-    
-    private var statList: [Int] {
-        return [strength, intelligence, speed, endurance, rank, courage, firepower, skill]
-    }
-    private let statNames: [String] = ["Str", "Int", "Spd", "End", "Rnk", "Crg", "Pow", "Skl"]
-    var statViewModels: [StatViewModel] {
+
+    var statViewModels: [StatViewModel] {//TODO: This should probably be moved into the ViewManager
         var models: [StatViewModel] = []
-        for (index, element) in statNames.enumerated() {
-            models.append(StatViewModel(statName: element, statValue: statList[index], statColor: currentColor.opacity((1.0/Double(statNames.count))*Double(index+1))))
+        for (index, element) in ViewManager().statNames.enumerated() {
+            models.append(StatViewModel(statName: element,
+                                        statValue: ViewManager().statList(for: self)[index],
+                                        statColor: ViewManager()
+                    .currentColor(for: team)
+                    .opacity((1.0/Double(ViewManager().statNames.count))*Double(index+1))))
         }
         return models
     }
     
     init(team: TransformerFaction) {
         self.team = team
-        self.name = TransformerNames().randomName(for: team)
+        self.name = ViewManager().randomName(for: team)
         self.strength = Int.random(in: 1 ..< 10)
         self.intelligence = Int.random(in: 1 ..< 10)
         self.speed = Int.random(in: 1 ..< 10)

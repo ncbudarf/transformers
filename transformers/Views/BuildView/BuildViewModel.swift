@@ -20,14 +20,6 @@ class BuildViewModel: ObservableObject {
         
     let request: Request = Request()
     
-    var autobotColor: Color {
-        return newTransformer.autobotColor
-    }
-    
-    var deceptaconColor: Color {
-        return newTransformer.deceptaconColor
-    }
-    
     var transformerName: String {
         return newTransformer.name
     }
@@ -35,7 +27,7 @@ class BuildViewModel: ObservableObject {
     init(newTransformer: NewTransformer) {
         self.newTransformer = newTransformer
         self.pieChart = PieChart(newTransformer: newTransformer)
-        self.currentFactionColor = newTransformer.currentColor
+        self.currentFactionColor = ViewManager().currentColor(for: newTransformer.team)
         self.statViewModels = newTransformer.statViewModels
     }
 }
@@ -44,7 +36,7 @@ extension BuildViewModel {
     func rerollTransformer(to faction: TransformerFaction = Bool.random() ? .autobot : .deceptacon) {
         newTransformer = NewTransformer(team: faction)
         pieChart = PieChart(newTransformer: newTransformer)
-        currentFactionColor = newTransformer.currentColor
+        currentFactionColor = ViewManager().currentColor(for: newTransformer.team)
         statViewModels = newTransformer.statViewModels
     }
 }
