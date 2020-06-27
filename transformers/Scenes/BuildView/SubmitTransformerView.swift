@@ -11,24 +11,20 @@ import SwiftUI
 
 struct SubmitTransformerView: View {
     @ObservedObject var viewModel: BuildViewModel
+    @State var buildAlert = false
     
     private func submitTransformer() {
-        _ = Alert(title: Text("Building Transformer"), dismissButton: .default(Text("ok")))//TODO:Abstract out Alert
         viewModel.submitButtonDisabled = true
         viewModel.request.addTransformer(transformer: viewModel.newTransformer.convertToTransformerToCreate(),
                                          completionHandler: { transformer in
             if let transformer = transformer {
-                //TODO: alerts are supposed to show or something
-                _ = Alert(title: Text("Transformer Created!"), dismissButton: .default(Text("ok")))//TODO:Abstract out Alert
+                self.buildAlert = true
                 self.viewModel.updateTransformerList(with: transformer)
                 self.viewModel.submitButtonDisabled = false
                 self.viewModel.rerollTransformer()
             } else {
-                _ = Alert(title: Text("Failed To Create Transformer"), message: Text("Please try again"), primaryButton: .default(Text("ok"), action: {}), secondaryButton: .default(Text("retry"), action: {
-                        self.viewModel.submitButtonDisabled = true
-                        self.submitTransformer()
-                }))//TODO:Abstract out Alert
-            }//TODO: SubmitButton not disabled for long enough
+                //TODO:This needs to handle an error
+            }
         })
     }
     
@@ -41,7 +37,10 @@ struct SubmitTransformerView: View {
                     .fontWeight(.bold)
                     .padding()
                     .font(.title)
-                    .foregroundColor(self.viewModel.submitButtonDisabled ? .gray : self.viewModel.currentFactionColor)//TODO:This should be in view model
+                    .foregroundColor(self.viewModel.submitButtonDisabled ? .gray : self.viewModel.currentFactionColor)
+                    .alert(isPresented: self.$buildAlert) {
+                        Alert(title: Text("Transformer Built"), dismissButton: .default(Text("ok")))
+                    }
             }.frame(maxWidth: .infinity)
             .disabled(self.viewModel.submitButtonDisabled)
         }
