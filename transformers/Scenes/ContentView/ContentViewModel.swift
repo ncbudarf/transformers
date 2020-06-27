@@ -18,11 +18,28 @@ class ContentViewModel: ObservableObject {
     
     private let overlayTextInitial: String = "Fetching Token..."
     private let overlayTextFailure: String = "Failed to fetch Token"
-    let retryButtonText: String = "Retry"
     
     @Published var hasToken: Bool
     
     init() {
         self.hasToken = request.hasToken
+    }
+}
+
+extension ContentViewModel {
+    func retryButtonText() -> String {
+        return "Retry"
+    }
+    
+    func transformerText() -> String {
+        return "Transform"
+    }
+    
+    func buildText() -> String {
+        return "Build"
+    }
+    
+    func battleText() -> String {
+        return "Battle"
     }
 }

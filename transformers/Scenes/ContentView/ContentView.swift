@@ -12,30 +12,31 @@ struct ContentView: View {
     @ObservedObject var viewModel: ContentViewModel = ContentViewModel()
     
     var body: some View {
-        viewModel.hasToken ? AnyView(ContentTabView()) : AnyView(ContentOverlayView(viewModel: viewModel))
+        viewModel.hasToken ? AnyView(ContentTabView(viewModel: viewModel)) : AnyView(ContentOverlayView(viewModel: viewModel))
     }
 }
 
 struct ContentTabView: View {
+    @ObservedObject var viewModel: ContentViewModel
+    
     var body: some View{
         TabView {
             TransformerView()
                 .tabItem {
                     Image("transform")
-                    Text("Transform")
+                    Text(viewModel.transformerText())
             }
             BuildView()
                 .tabItem {
                     Image("build")
-                    Text("Build")
+                    Text(viewModel.buildText())
             }
             BattleView()
                 .tabItem {
                     Image("battle")
-                    Text("Battle")
+                    Text(viewModel.battleText())
             }
         }
-
     }
 }
 

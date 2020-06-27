@@ -32,7 +32,7 @@ struct ContentOverlayView: View {
             }
             if failedToReturnToken {
                 Button(action: fetchToken) {
-                    Text(viewModel.retryButtonText)
+                    Text(viewModel.retryButtonText())
                 }.padding()
             }
         }

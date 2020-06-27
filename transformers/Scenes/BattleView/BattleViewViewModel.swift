@@ -70,4 +70,28 @@ extension BattleViewViewModel {
     func pickTeamText() -> String {
         return "Pick Team:"
     }
+    
+    func noWinnersText() -> String {
+        return "Optimus Prime and Predaking fight in an epic battle. There are no winners"
+    }
+    
+    func playerScore() -> String {
+        return "Player Score: \(victories.player)"
+    }
+    
+    func computerScore() -> String {
+        return "Computer Score: \(victories.computer)"
+    }
+    
+    func playerTeam() -> String {
+        return "Player Team:"
+    }
+    
+    func computerTeam() -> String {
+        return "Computer Team:"
+    }
+    
+    func exit() -> String {
+        return "Exit Arena"
+    }
 }

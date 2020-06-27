@@ -20,7 +20,7 @@ class TransformerListCellViewModel {
         return transformer.name
     }
     
-    var iconName: String {
+    var iconName: String { //TODO stop passing a string around
         switch transformer.team {
         case "A":
             return "autobotButtonIcon"
