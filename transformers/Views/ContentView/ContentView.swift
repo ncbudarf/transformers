@@ -29,7 +29,7 @@ struct ContentTabView: View {
                     Image("build")
                     Text("Build")
             }
-            Text("The content of the third view")
+            BattleView()
                 .tabItem {
                     Image("battle")
                     Text("Battle")

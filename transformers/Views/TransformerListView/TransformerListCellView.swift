@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 struct TransformerListCellView: View {
-    let viewModel: TransformerListCellViewModel
+    var viewModel: TransformerListCellViewModel
     
      var body: some View{
         VStack {

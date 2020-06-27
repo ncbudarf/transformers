@@ -11,16 +11,17 @@ import SwiftUI
 import Combine
 
 struct BattleView: View {
-    @ObservedObject var viewModel: BattleViewViewModel
+    @ObservedObject var viewModel: BattleViewViewModel = BattleViewViewModel()
     
-    var body: some View{
-        switch viewModel.viewState {
-        case .pickTeam:
-            return Text("pick team")
-        case .battle:
-            return Text("battle")
-        default:
-            return Text("pick team")
+    var body: some View {
+        VStack {
+            if viewModel.viewState == .pickTeam {
+                BattleTeamPickerView(viewModel: viewModel)
+            } else if viewModel.viewState  == .battle {
+                ArenaView(viewModel: viewModel)
+            } else {
+                Text("pick team")
+            }
         }
     }
 }
