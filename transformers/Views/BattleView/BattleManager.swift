@@ -35,8 +35,8 @@ class Victories {
 }
 
 class BattleManager {
-    private var playerTeam: [Transformer] = []
-    private var computerTeam: [Transformer] = []
+    var playerTeam: [Transformer] = []
+    var computerTeam: [Transformer] = []
     var events: [ArenaEvents] = []
     var victories: Victories = Victories()
     

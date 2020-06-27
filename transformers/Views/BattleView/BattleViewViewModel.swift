@@ -17,7 +17,7 @@ enum BattleViewState {
 
 class BattleViewViewModel: ObservableObject {
     @Published var viewState: BattleViewState = .pickTeam
-    //var battleManager: BattleManager = BattleManager(playerFaction: .autbot)
+    var battleManager: BattleManager?
     var events: [ArenaEvents] = []
     var victories: Victories = Victories()
     
@@ -26,11 +26,48 @@ class BattleViewViewModel: ObservableObject {
 extension BattleViewViewModel {
     func factionSelected(_ faction: TransformerFaction) {
         viewState = .battle
-        BattleManager(playerFaction: faction).arena(completionHandler: { events, victories in
+        battleManager = BattleManager(playerFaction: faction)
+        battleManager?.arena(completionHandler: { events, victories in
             guard let events = events else { return }
             self.events = events
             self.victories = victories
         })
+    }
+}
+
+extension BattleViewViewModel {
+    func playerTeamNames() -> [String] {
+        guard let battleManager = battleManager else { return [] }
+        return battleManager.playerTeam.map { $0.name }
+    }
+    
+    func computerTeamNames() -> [String] {
+        guard let battleManager = battleManager else { return [] }
+        return battleManager.computerTeam.map { $0.name }
+    }
+    
+    func epicBattle() -> Bool {
+        return !events.filter{ $0 == ArenaEvents.primeVsPredaking }.isEmpty
+    }
+    
+    func whoWon() -> String {
+        if victories.player > victories.computer {
+            return "Player Wins!"
+        } else if victories.player < victories.computer {
+            return "Computer Wins!"
+        } else {
+            return "Tie Game!"
+        }
+    }
+}
+
+extension BattleViewViewModel {
+    func displayVersionOfEvents() -> [String] {
+        var stringEventList: [String] = []
+        events.forEach { event in
+            stringEventList.append(event.rawValue)
+        }
+        return stringEventList
     }
 }
 
