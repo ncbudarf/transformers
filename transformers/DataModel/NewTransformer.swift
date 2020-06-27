@@ -25,17 +25,6 @@ class NewTransformer {
     var power: Int {
         return strength + intelligence + speed + endurance + firepower
     }
-    
-    public var convertTeamEnumToString: String {
-        switch team {
-        case .autobot:
-            return "A"
-        case .deceptacon:
-            return "D"
-        default:
-            return "A"
-        }
-    }
 
     var statViewModels: [StatViewModel] {//TODO: This should probably be moved into the ViewManager
         var models: [StatViewModel] = []
@@ -65,6 +54,15 @@ class NewTransformer {
 
 extension NewTransformer {
     func convertToTransformerToCreate() -> TransformerToCreate {
-        return TransformerToCreate(name: name, strength: strength, intelligence: intelligence, speed: speed, endurance: endurance, rank: rank, courage: courage, firepower: firepower, skill: skill, team: convertTeamEnumToString)
+        return TransformerToCreate(name: name, strength: strength, intelligence: intelligence, speed: speed, endurance: endurance, rank: rank, courage: courage, firepower: firepower, skill: skill, team: convertTeamEnumToString())
+    }
+    
+    private func convertTeamEnumToString() -> String {
+        switch team {
+        case .autobot:
+            return "A"
+        case .deceptacon:
+            return "D"
+        }
     }
 }

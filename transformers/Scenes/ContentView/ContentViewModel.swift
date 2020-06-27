@@ -10,7 +10,7 @@ import Foundation
 import Combine
 
 class ContentViewModel: ObservableObject {
-    let request: Request = Request()
+    let request: RequestManager = RequestManager()
     
     func overlayText(_ failedToFetchToken: Bool) -> String {
         failedToFetchToken ? overlayTextFailure : overlayTextInitial

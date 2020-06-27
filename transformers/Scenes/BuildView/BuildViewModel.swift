@@ -18,7 +18,7 @@ class BuildViewModel: ObservableObject {
     
     @State var submitButtonDisabled: Bool = false
         
-    let request: Request = Request()
+    let request: RequestManager = RequestManager()
     
     var transformerName: String {
         return newTransformer.name

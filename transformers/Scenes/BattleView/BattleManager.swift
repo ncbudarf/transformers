@@ -62,8 +62,6 @@ class BattleManager {
             return .deceptacon
         case .deceptacon:
             return .autobot
-        default:
-            return .deceptacon
         }
     }
     

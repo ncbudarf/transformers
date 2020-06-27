@@ -10,7 +10,7 @@ import Foundation
 import Combine
 
 class TransformerListViewModel: ObservableObject {
-    let request: Request = Request()
+    let request: RequestManager = RequestManager()
     @Published var transformers: [Transformer] = []
 }
 

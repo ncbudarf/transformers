@@ -20,5 +20,5 @@ struct Transformer: Codable {
     var courage: Int
     var firepower: Int
     var skill: Int
-    var team_icon: String
+    var team_icon: String //TODO: Change the name on this
 }

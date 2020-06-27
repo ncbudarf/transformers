@@ -33,8 +33,6 @@ extension ViewManager {
             return autobotNames[Int.random(in: 0 ..< 10)]
         case .deceptacon:
             return deceptaconNames[Int.random(in: 0 ..< 10)]
-        default:
-            return autobotNames[Int.random(in: 0 ..< 10)]
         }
     }
 }
@@ -46,8 +44,6 @@ extension ViewManager {
             return ViewManager().autobotColor
         case .deceptacon:
             return ViewManager().deceptaconColor
-        default:
-            return ViewManager().autobotColor
         }
     }
     

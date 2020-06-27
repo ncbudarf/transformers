@@ -15,7 +15,7 @@
 		1F7D9CF424A18C9B009191D1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F7D9CF324A18C9B009191D1 /* Preview Assets.xcassets */; };
 		1F7D9CF724A18C9B009191D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7D9CF524A18C9B009191D1 /* LaunchScreen.storyboard */; };
 		1F7D9D0224A18C9B009191D1 /* transformersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D9D0124A18C9B009191D1 /* transformersTests.swift */; };
-		1F7D9D0D24A18EE9009191D1 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D9D0C24A18EE9009191D1 /* Request.swift */; };
+		1F7D9D0D24A18EE9009191D1 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D9D0C24A18EE9009191D1 /* RequestManager.swift */; };
 		1F7D9D1224A1BA60009191D1 /* Transformers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D9D1124A1BA60009191D1 /* Transformers.swift */; };
 		1F7D9D1424A1BA79009191D1 /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D9D1324A1BA79009191D1 /* Transformer.swift */; };
 		1F7D9D1624A1C17E009191D1 /* TransformerToCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D9D1524A1C17E009191D1 /* TransformerToCreate.swift */; };
@@ -72,7 +72,7 @@
 		1F7D9CFD24A18C9B009191D1 /* transformersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = transformersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F7D9D0124A18C9B009191D1 /* transformersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transformersTests.swift; sourceTree = "<group>"; };
 		1F7D9D0324A18C9B009191D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F7D9D0C24A18EE9009191D1 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		1F7D9D0C24A18EE9009191D1 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		1F7D9D1124A1BA60009191D1 /* Transformers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transformers.swift; sourceTree = "<group>"; };
 		1F7D9D1324A1BA79009191D1 /* Transformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transformer.swift; sourceTree = "<group>"; };
 		1F7D9D1524A1C17E009191D1 /* TransformerToCreate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformerToCreate.swift; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 		1F7D9CE924A18C98009191D1 /* transformers */ = {
 			isa = PBXGroup;
 			children = (
-				1F7D9D1724A2C9C7009191D1 /* Views */,
+				1F7D9D1724A2C9C7009191D1 /* Scenes */,
 				1F7D9D1024A1BA4E009191D1 /* DataModel */,
 				1F7D9CEA24A18C98009191D1 /* AppDelegate.swift */,
 				1F7D9CEC24A18C98009191D1 /* SceneDelegate.swift */,
@@ -160,7 +160,7 @@
 				1F7D9CF524A18C9B009191D1 /* LaunchScreen.storyboard */,
 				1F7D9CF824A18C9B009191D1 /* Info.plist */,
 				1F7D9CF224A18C9B009191D1 /* Preview Content */,
-				1F7D9D0C24A18EE9009191D1 /* Request.swift */,
+				1F7D9D0C24A18EE9009191D1 /* RequestManager.swift */,
 				1F7D9D4F24A569C0009191D1 /* DataManager.swift */,
 				1F7D9D5224A58D8B009191D1 /* ViewManager.swift */,
 			);
@@ -195,7 +195,7 @@
 			path = DataModel;
 			sourceTree = "<group>";
 		};
-		1F7D9D1724A2C9C7009191D1 /* Views */ = {
+		1F7D9D1724A2C9C7009191D1 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				1F7D9D5124A56E38009191D1 /* BattleView */,
@@ -204,7 +204,7 @@
 				1F7D9D2724A2FD8E009191D1 /* PieChart */,
 				1F7D9D1824A2C9CF009191D1 /* BuildView */,
 			);
-			path = Views;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		1F7D9D1824A2C9CF009191D1 /* BuildView */ = {
@@ -450,7 +450,7 @@
 				1F7D9D5B24A69891009191D1 /* BattleTeamPickerView.swift in Sources */,
 				1F7D9D3F24A52168009191D1 /* TransformerNameView.swift in Sources */,
 				1F7D9D4424A53495009191D1 /* TransformerListCellViewModel.swift in Sources */,
-				1F7D9D0D24A18EE9009191D1 /* Request.swift in Sources */,
+				1F7D9D0D24A18EE9009191D1 /* RequestManager.swift in Sources */,
 				1F7D9CED24A18C98009191D1 /* SceneDelegate.swift in Sources */,
 				1F7D9D4224A53485009191D1 /* TransformerListCellView.swift in Sources */,
 				1F7D9D3524A455AA009191D1 /* StatView.swift in Sources */,
@@ -621,6 +621,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"transformers/Preview Content\"";
+				DEVELOPMENT_TEAM = 9QLM4ZJTYT;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = transformers/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -641,6 +642,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"transformers/Preview Content\"";
+				DEVELOPMENT_TEAM = 9QLM4ZJTYT;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = transformers/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
