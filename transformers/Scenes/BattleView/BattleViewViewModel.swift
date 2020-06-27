@@ -18,7 +18,6 @@ enum BattleViewState {
 class BattleViewViewModel: ObservableObject {
     @Published var viewState: BattleViewState = .pickTeam
     var battleManager: BattleManager?
-    var events: [ArenaEvents] = []
     var victories: Victories = Victories()
     
 }
@@ -27,9 +26,7 @@ extension BattleViewViewModel {
     func factionSelected(_ faction: TransformerFaction) {
         viewState = .battle
         battleManager = BattleManager(playerFaction: faction)
-        battleManager?.arena(completionHandler: { events, victories in
-            guard let events = events else { return }
-            self.events = events
+        battleManager?.arena(completionHandler: { victories in
             self.victories = victories
         })
     }
@@ -47,7 +44,7 @@ extension BattleViewViewModel {
     }
     
     func epicBattle() -> Bool {
-        return !events.filter{ $0 == ArenaEvents.primeVsPredaking }.isEmpty
+        return battleManager?.primeVsPredaking ?? false
     }
     
     func whoWon() -> String {
@@ -58,16 +55,6 @@ extension BattleViewViewModel {
         } else {
             return "Tie Game!"
         }
-    }
-}
-
-extension BattleViewViewModel {
-    func displayVersionOfEvents() -> [String] {
-        var stringEventList: [String] = []
-        events.forEach { event in
-            stringEventList.append(event.rawValue)
-        }
-        return stringEventList
     }
 }
 

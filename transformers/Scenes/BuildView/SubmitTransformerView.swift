@@ -11,23 +11,11 @@ import SwiftUI
 
 struct SubmitTransformerView: View {
     @ObservedObject var viewModel: BuildViewModel
-    @State var buildAlert = false
-    
+
     private func submitTransformer() {
         viewModel.submitButtonDisabled = true
-        viewModel.request.addTransformer(transformer: viewModel.newTransformer.convertToTransformerToCreate(),
-                                         completionHandler: { transformer in
-            if let transformer = transformer {
-                self.buildAlert = true
-                self.viewModel.updateTransformerList(with: transformer)
-                self.viewModel.submitButtonDisabled = false
-                self.viewModel.rerollTransformer()
-            } else {
-                //TODO:This needs to handle an error
-            }
-        })
+        viewModel.addTransformer()
     }
-    
     
     var body: some View {
         GeometryReader { geometry in
@@ -38,7 +26,7 @@ struct SubmitTransformerView: View {
                     .padding()
                     .font(.title)
                     .foregroundColor(self.viewModel.submitButtonDisabled ? .gray : self.viewModel.currentFactionColor)
-                    .alert(isPresented: self.$buildAlert) {
+                    .alert(isPresented: self.viewModel.$buildAlert) {
                         Alert(title: Text("Transformer Built"), dismissButton: .default(Text("ok")))
                     }
             }.frame(maxWidth: .infinity)

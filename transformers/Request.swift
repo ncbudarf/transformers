@@ -38,11 +38,8 @@ class RequestManager {
     
     private func createURLRequest(type: RequestType,
                                   transformerID: String = "",
-                                  newTransformer: TransformerToCreate? = nil) -> URLRequest? {
-        guard
-            var url = URL(string: baseURLString),
-            let token = token()
-            else {
+                                  newTransformer: TransformerToCreate? = nil) -> URLRequest {
+        guard let token = token() else {
                 print("Invalid base URL or missing token")
                 return nil
         }

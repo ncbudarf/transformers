@@ -20,7 +20,7 @@ class TransformerListCellViewModel {
         return transformer.name
     }
     
-    var iconName: String {//TODO: This should probably moved into the ViewManager
+    var iconName: String {
         switch transformer.team {
         case "A":
             return "autobotButtonIcon"

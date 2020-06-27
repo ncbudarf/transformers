@@ -8,27 +8,6 @@
 
 import Foundation
 
-enum ArenaEvents: String {
-    case listTeams //List the current teams
-    case noMoreFighters //One side is out of transformers
-    case gameOver //The game is over
-    case primeVsPredaking //Prime fights Predaking, ending the game
-    case primeIsBattler //Prime fights and wins
-    case predakingIsBattler //Predaking fights and wins
-    case fightOver //One side wins, start the next fight
-    case playerWinsFight //Player wins fight
-    case computerWinsFight //Computer wins fight
-    case playerRunsAway //Player runs away from fight
-    case computerRunsAway //Computer runs away from fight
-    case playerIsLessSkillful //Player is not as skilled as opponent
-    case computerIsLesSkillful //Computer is not as skilled as opponent
-    case playerIsLessOverall //Player is not as overall as opponent
-    case computerIsLesOverall //Computer is not as overall as opponent
-    case computerAndPlayerEqualOverall //plauer and computer have same overall
-    case fightIsTie //The fight is a tie
-    case notEnoughFighters //Not enough fighters to play
-}
-
 class Victories {
     var player: Int = 0
     var computer: Int = 0
@@ -37,21 +16,17 @@ class Victories {
 class BattleManager {
     var playerTeam: [Transformer] = []
     var computerTeam: [Transformer] = []
-    var events: [ArenaEvents] = []
     var victories: Victories = Victories()
+    var primeVsPredaking: Bool = false
     
-    typealias CompletionHandler = (_ events:[ArenaEvents]?, _ victories: Victories) -> Void
+    typealias CompletionHandler = (_ victories: Victories) -> Void
     
     init(playerFaction: TransformerFaction) {
         guard
             let playerTeam = getTransformers(from: playerFaction),
             !playerTeam.isEmpty,
             let computerTeam = getTransformers(from: computerFaction(from: playerFaction)),
-            !computerTeam.isEmpty else {
-                events.append(.notEnoughFighters)
-                events.append(.gameOver)
-                return
-            }
+            !computerTeam.isEmpty else { return }
         self.playerTeam = playerTeam
         self.computerTeam = computerTeam
     }
@@ -87,13 +62,12 @@ extension BattleManager {
         //1. Order Teams by rank
         playerTeam = orderTeamByRank(team: playerTeam)
         computerTeam = orderTeamByRank(team: computerTeam)
-        events.append(.listTeams)
         
         //2. battle until one team is 'destroyed'
         battle(pTeam: playerTeam, cTeam: computerTeam)
         
         //3. Team that won the most battles is the winner
-        completionHandler(events, victories)
+        completionHandler(victories)
     }
     
     func orderTeamByRank(team: [Transformer]) -> [Transformer] {
@@ -106,16 +80,9 @@ extension BattleManager {
             let player: Transformer = pTeam.first,
             !cTeam.isEmpty,
             let computer: Transformer = cTeam.first
-            else {
-                events.append(.noMoreFighters)
-                events.append(.gameOver)
-                return
-        }
+            else { return }
         //1. Optimus Prime vs Predaking = game ends right away
-        guard !primeVsPredaking(player, computer) else {
-            events.append(.gameOver)
-            return
-        }
+        guard !primeVsPredaking(player, computer) else { return }
         
         //2. Optimus Prime OR Predaking vs anyone else is victory
         guard !checkPrimeOrPredaking(player, computer) else {
@@ -149,17 +116,14 @@ extension BattleManager {
 extension BattleManager {
     private func checkOverallRating(_ player: Transformer, _ computer: Transformer) -> Bool {
         if opponentFighterIsSameRating(player, computer) {
-            events.append(.computerAndPlayerEqualOverall)
             tieFight()
             return true
         }
         if opponentFighterIsLessRating(player, computer) {
-            events.append(.computerIsLesOverall)
             playerWinsFight()
             return true
         }
         if opponentFighterIsLessRating(computer, player) {
-            events.append(.playerIsLessOverall)
             computerWinsFight()
             return true
         }
@@ -188,12 +152,10 @@ extension BattleManager {
 extension BattleManager {
     private func checkFighterSkill(_ player: Transformer, _ computer: Transformer) -> Bool {
         if opponentFighterIsLessSkillful(player, computer) {
-            events.append(.computerIsLesSkillful)
             playerWinsFight()
             return true
         }
         if opponentFighterIsLessSkillful(computer, player) {
-            events.append(.playerIsLessSkillful)
             computerWinsFight()
             return true
         }
@@ -211,12 +173,10 @@ extension BattleManager {
 extension BattleManager {
     private func checkFighterRunsAway(_ player: Transformer, _ computer: Transformer) -> Bool {
         if opponentFighterRunsAway(player, computer) {
-            events.append(.computerRunsAway)
             playerWinsFight()
             return true
         }
         if opponentFighterRunsAway(computer, player) {
-            events.append(.playerRunsAway)
             computerWinsFight()
             return true
         }
@@ -248,10 +208,8 @@ extension BattleManager {
     private func primeOrPredaking(_ transformer: Transformer) -> Bool {
         switch transformer.name {
         case "Optimus Prime":
-            events.append(.primeIsBattler)
             return true
         case "Predaking":
-            events.append(.predakingIsBattler)
             return true
         default:
             return false
@@ -262,7 +220,7 @@ extension BattleManager {
 extension BattleManager {
     private func primeVsPredaking(_ player: Transformer, _ computer: Transformer) -> Bool {
         if player.name == "Optimus Prime" && computer.name == "Predaking" {
-            events.append(.primeVsPredaking)
+            primeVsPredaking = true
             return true
         }
         return false
@@ -271,23 +229,19 @@ extension BattleManager {
 
 extension BattleManager {
     private func tieFight() {
-        events.append(.fightIsTie)
         victories.player += 1
         victories.computer += 1
     }
     
     private func playerWinsFight() {
-        events.append(.playerWinsFight)
         victories.player += 1
     }
     
     private func computerWinsFight() {
-        events.append(.computerWinsFight)
         victories.computer += 1
     }
     
     private func fightOver(_ pTeam: [Transformer],_ cTeam: [Transformer]) {
-        events.append(.fightOver)
         battle(pTeam: Array(pTeam.dropFirst(1)), cTeam: Array(cTeam.dropFirst(1)))
     }
 }

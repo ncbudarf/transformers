@@ -12,17 +12,18 @@ import Combine
 class TransformerListViewModel: ObservableObject {
     let request: RequestManager = RequestManager()
     @Published var transformers: [Transformer] = []
+    var cancellables = Set<AnyCancellable>()
 }
 
 extension TransformerListViewModel {
     func loadTransformers() {
         let transformers: [Transformer] = DataManager().decodeTransformerList()
         guard !transformers.isEmpty else {
-            request.getTransformers(completionHandler: { transformers in
-                DispatchQueue.main.async {
-                    self.transformers = transformers ?? []
-                }
-            })
+            request.getTransformers().sink(receiveCompletion: { completion in
+                print(completion)
+            }, receiveValue: { response in
+                self.transformers = response.value.transformers
+            }).store(in: &cancellables)
             return
         }
         self.transformers = transformers
@@ -32,12 +33,11 @@ extension TransformerListViewModel {
 extension TransformerListViewModel {
     func removeElements(at indexSet: IndexSet) {
         guard let index = indexSet.first else { return }
-        request.removeTransformer(transformerID: transformers[index].id,
-                                completionHandler: { success in
-                                    DispatchQueue.main.async {
-                                        self.transformers.remove(at: index)
-                                        DataManager().encodeTransformerList(self.transformers)
-                                    }
-        })
+        request.removeTransformer(with: transformers[index].id).sink(receiveCompletion: { completion in
+            print(completion)
+        }, receiveValue: { response in
+            self.transformers.remove(at: index)
+            DataManager().encodeTransformerList(self.transformers)
+        }).store(in: &cancellables)
     }
 }

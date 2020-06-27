@@ -17,7 +17,10 @@ class BuildViewModel: ObservableObject {
     @Published var statViewModels: [StatViewModel]
     
     @State var submitButtonDisabled: Bool = false
-        
+    @State var buildAlert: Bool = false
+    
+    var cancellables = Set<AnyCancellable>()
+    
     let request: RequestManager = RequestManager()
     
     var transformerName: String {
@@ -29,6 +32,20 @@ class BuildViewModel: ObservableObject {
         self.pieChart = PieChart(newTransformer: newTransformer)
         self.currentFactionColor = ViewManager().currentColor(for: newTransformer.team)
         self.statViewModels = newTransformer.statViewModels
+    }
+}
+
+extension BuildViewModel {
+    func addTransformer() {
+        let transformer = newTransformer.convertToTransformerToCreate()
+        request.addTransformer(transformer).sink(receiveCompletion: { completion in
+            print(completion)
+        }, receiveValue: { response in
+            self.updateTransformerList(with: response.value)
+            self.submitButtonDisabled = false
+            self.buildAlert = true
+            self.rerollTransformer()
+        }).store(in: &cancellables)
     }
 }
 
